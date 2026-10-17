@@ -6,21 +6,31 @@ Daily system design practice, 30–45 minutes a day. The goal is to build real i
 
 `/today` → read the issue's resources → `/tutor` → write the entry from memory → `/polish` → explain it out loud in 2 minutes → commit with `Closes #N`.
 
-The full guide, with a day 1 walkthrough, is in [docs/how-to.md](docs/how-to.md). To recreate this repo from scratch, use [docs/bootstrap-prompt.md](docs/bootstrap-prompt.md).
+To get your own copy, see [Get your own copy](#get-your-own-copy-quick-start). The full daily guide, with a day 1 walkthrough, is in [docs/how-to.md](docs/how-to.md). To build a variant from scratch, use [docs/bootstrap-prompt.md](docs/bootstrap-prompt.md).
 
-## Use this for your own practice
+## Get your own copy (quick start)
 
-The curriculum is data, not hand-made GitHub state: `backlog/issues.json` (30 issues, in learning order), `backlog/labels.json` and `backlog/milestones.json`. `scripts/seed.py` turns them into real labels, milestones and issues, and is safe to rerun.
+You need: the [GitHub CLI](https://cli.github.com/) signed in (`gh auth login`), Python 3, and [Claude Code](https://claude.com/claude-code).
 
-1. Click **Use this template** to create your own repo. It should be brand new, with no issues or pull requests yet, so issue numbers line up with the learning order. The seeder stops before changing anything if they don't.
-2. Seed the backlog, either way:
-   - Locally, with the [GitHub CLI](https://cli.github.com/) signed in: `./scripts/seed.py` (add `--dry-run` to preview)
-   - On GitHub: **Actions** tab, **Seed backlog**, **Run workflow**
-3. Open Claude Code in the repo and run `/today`.
+```sh
+# 1. On GitHub, click "Use this template" > "Create a new repository" (keep it empty), then:
+gh repo clone <you>/<your-repo> && cd <your-repo>
 
-Use the template button rather than forking. If you do fork, first enable Issues (Settings, then Features) and enable workflows in the Actions tab.
+# 2. Create the labels, milestones and 30 issues (add --dry-run to preview first)
+./scripts/seed.py
 
-Edit the JSON before seeding to make the curriculum your own. Resources marked `"verified": false` were named from memory, so check them before relying on them.
+# 3. Start day 1
+claude        # then type: /today
+```
+
+You end up with your own repo holding 7 labels, 3 milestones and issues #1-#30 in learning order, plus the templates, the `new.sh` script and the Claude skills (they live in `.claude/` and come with the copy).
+
+- **No terminal for step 2?** In your repo, open the **Actions** tab, pick **Seed backlog**, and click **Run workflow**. This uses GitHub's built-in token, so no secret is needed.
+- **Start with an empty repo.** It must have no issues or pull requests yet, so issue numbers line up with the learning order. The seeder checks this and stops before changing anything.
+- **Use the template button, not a fork.** If you do fork, first enable Issues (Settings, then Features) and enable workflows in the Actions tab.
+- **Make it your own.** The curriculum is data: `backlog/issues.json`, `backlog/labels.json` and `backlog/milestones.json`. Edit them before seeding. Resources marked `"verified": false` were named from memory, so check them before relying on them.
+
+What has been tested: `seed.py` against a simulated `gh` (fresh repo, rerun, existing PR, number drift, partial run, dry run) and a dry run against the original repo. What hasn't: the "Seed backlog" workflow and creating a real copy from the template. If either fails for you, please open an issue.
 
 ## Weekly rhythm
 

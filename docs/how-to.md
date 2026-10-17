@@ -1,5 +1,9 @@
 # How to use this repo every day
 
+## Before day 1: set up your own copy
+
+Use the template button on the repo, clone your copy, run `./scripts/seed.py` to create the labels, milestones and 30 issues, then open Claude Code and run `/today`. Prerequisites and the details (empty repo required, template rather than fork, the Actions-button alternative) are in the README's [Get your own copy](../README.md#get-your-own-copy-quick-start) section.
+
 ## TL;DR
 
 1. `/today`: picks the next open issue and creates the entry file.
