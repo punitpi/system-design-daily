@@ -15,7 +15,7 @@ Optional argument: `concept`, `design`, `teardown`, or `review`. If none is give
 
 2. **Work out the type** from the labels (`concept`, `design`, `teardown`). A `review` issue revisits an existing entry, so find that entry and open it rather than creating a new one, then suggest `/quiz` or `/tutor` on it.
 
-3. **Propose a slug** from the title. Drop the `NN · ` prefix, take the part before any ` — `, lowercase it, and hyphenate it (e.g. `01 · Back-of-the-envelope estimation` becomes `back-of-the-envelope-estimation`). Show the exact command and confirm with the user before running it:
+3. **Propose a slug** from the title. Drop the `NN · ` prefix and any parenthetical, lowercase it, replace each run of non-alphanumeric characters with a single `-`, and trim leading and trailing hyphens. For example, `01 · Back-of-the-envelope estimation` becomes `back-of-the-envelope-estimation`, `07 · CAP, PACELC & consistency models` becomes `cap-pacelc-consistency-models`, and `22 · Chat system (WhatsApp-like)` becomes `chat-system`. Show the exact command and confirm with the user before running it:
    ```sh
    ./scripts/new.sh <type> <slug> <issue#>
    ```
