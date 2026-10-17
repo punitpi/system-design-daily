@@ -19,6 +19,7 @@ Claude must not:
 - `templates/{concept,design,teardown}.md` hold `{{TITLE}}`, `{{DATE}}`, `{{ISSUE}}` placeholders.
 - Always create entries with `./scripts/new.sh <type> <slug> [issue#]`. It fills the placeholders, refuses to overwrite, and appends to the README progress log. Don't create entry files or log rows by hand.
 - The README's "Progress log" table must stay the last thing in the file (new.sh appends to it).
+- The curriculum's source of truth is `backlog/*.json`. To add or change a planned issue, edit the JSON and run `scripts/seed.py` (it only creates what's missing and refuses to run if issue numbers wouldn't line up). Don't create the 30 planned issues by hand with `gh issue create`. Ad hoc teardown and review issues are fine to create directly.
 - Backlog lives in GitHub issues (`gh`). Issue numbers 1–30 follow the learning order. Labels: `concept`, `design`, `teardown`, `review`, `phase-1-fundamentals`, `phase-2-patterns`, `phase-3-designs`. Milestones: one per phase.
 - Commit messages for entries: `<type>: <topic>` with `Closes #N` in the body. Don't commit unless I ask.
 - Diagrams: Mermaid in ```mermaid blocks; Excalidraw PNGs sit beside the design's README.

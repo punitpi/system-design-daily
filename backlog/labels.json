@@ -1,0 +1,39 @@
+{
+  "labels": [
+    {
+      "name": "concept",
+      "color": "1f6feb",
+      "description": "Concept entry: one building block"
+    },
+    {
+      "name": "design",
+      "color": "2ea44f",
+      "description": "Design entry: one end-to-end system"
+    },
+    {
+      "name": "teardown",
+      "color": "8250df",
+      "description": "Teardown of a real engineering blog post"
+    },
+    {
+      "name": "phase-1-fundamentals",
+      "color": "fbca04",
+      "description": "Phase 1: Fundamentals"
+    },
+    {
+      "name": "phase-2-patterns",
+      "color": "f9a03f",
+      "description": "Phase 2: Patterns"
+    },
+    {
+      "name": "phase-3-designs",
+      "color": "d93f0b",
+      "description": "Phase 3: Classic designs"
+    },
+    {
+      "name": "review",
+      "color": "bfdadc",
+      "description": "Revisit an earlier entry (v2)"
+    }
+  ]
+}

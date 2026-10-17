@@ -1,0 +1,732 @@
+{
+  "_comment": "Issue number = position in this list (1-based). Title on GitHub is '<NN> · <title>'. Resources with verified=false were named from memory, not checked against a source.",
+  "issues": [
+    {
+      "title": "Back-of-the-envelope estimation",
+      "labels": [
+        "concept",
+        "phase-1-fundamentals"
+      ],
+      "milestone": "Phase 1 — Fundamentals",
+      "goal": "Be able to size a system (QPS, storage, bandwidth) in a few minutes with numbers you can defend.",
+      "cover": [
+        "Powers of 2",
+        "Latency numbers every programmer should know",
+        "QPS / storage / bandwidth math",
+        "Peak vs average load"
+      ],
+      "resources": [
+        {
+          "text": "system-design-primer: [Powers of two table](https://github.com/donnemartin/system-design-primer#powers-of-two-table), [Latency numbers every programmer should know](https://github.com/donnemartin/system-design-primer#latency-numbers-every-programmer-should-know)",
+          "verified": true
+        },
+        {
+          "text": "Alex Xu, *System Design Interview – An Insider's Guide*: \"Back-of-the-envelope Estimation\" chapter",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Load balancing",
+      "labels": [
+        "concept",
+        "phase-1-fundamentals"
+      ],
+      "milestone": "Phase 1 — Fundamentals",
+      "goal": "Understand how traffic is spread across servers and what each balancing choice costs.",
+      "cover": [
+        "L4 vs L7 load balancing",
+        "Round robin / least connections / hashing",
+        "Health checks",
+        "Sticky sessions"
+      ],
+      "resources": [
+        {
+          "text": "system-design-primer: [Load balancer](https://github.com/donnemartin/system-design-primer#load-balancer), [Layer 4 load balancing](https://github.com/donnemartin/system-design-primer#layer-4-load-balancing), [Layer 7 load balancing](https://github.com/donnemartin/system-design-primer#layer-7-load-balancing)",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Caching strategies",
+      "labels": [
+        "concept",
+        "phase-1-fundamentals"
+      ],
+      "milestone": "Phase 1 — Fundamentals",
+      "goal": "Know which caching pattern fits which read/write workload and how caches fail.",
+      "cover": [
+        "Cache-aside",
+        "Write-through",
+        "Write-back",
+        "Eviction (LRU / LFU)",
+        "Invalidation",
+        "Stampede / thundering herd"
+      ],
+      "resources": [
+        {
+          "text": "system-design-primer: [Cache](https://github.com/donnemartin/system-design-primer#cache), [When to update the cache](https://github.com/donnemartin/system-design-primer#when-to-update-the-cache)",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Database replication",
+      "labels": [
+        "concept",
+        "phase-1-fundamentals"
+      ],
+      "milestone": "Phase 1 — Fundamentals",
+      "goal": "Understand the replication topologies and the consistency anomalies each one introduces.",
+      "cover": [
+        "Leader-follower",
+        "Multi-leader",
+        "Leaderless",
+        "Replication lag",
+        "Read-your-writes"
+      ],
+      "resources": [
+        {
+          "text": "Martin Kleppmann, *Designing Data-Intensive Applications* (1st ed.): \"Replication\" chapter",
+          "verified": true
+        },
+        {
+          "text": "system-design-primer: [Replication](https://github.com/donnemartin/system-design-primer#replication)",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Sharding & partitioning",
+      "labels": [
+        "concept",
+        "phase-1-fundamentals"
+      ],
+      "milestone": "Phase 1 — Fundamentals",
+      "goal": "Know how to split data across nodes and how partitioning choices create or avoid hotspots.",
+      "cover": [
+        "Range vs hash partitioning",
+        "Hotspots",
+        "Rebalancing",
+        "Cross-shard queries"
+      ],
+      "resources": [
+        {
+          "text": "Martin Kleppmann, *Designing Data-Intensive Applications* (1st ed.): \"Partitioning\" chapter",
+          "verified": true
+        },
+        {
+          "text": "system-design-primer: [Sharding](https://github.com/donnemartin/system-design-primer#sharding)",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Consistent hashing",
+      "labels": [
+        "concept",
+        "phase-1-fundamentals"
+      ],
+      "milestone": "Phase 1 — Fundamentals",
+      "goal": "Understand why consistent hashing minimizes data movement when nodes join or leave.",
+      "cover": [
+        "The hash ring",
+        "Virtual nodes",
+        "Minimal remapping"
+      ],
+      "resources": [
+        {
+          "text": "Alex Xu, *System Design Interview – An Insider's Guide*: \"Design Consistent Hashing\" chapter",
+          "verified": true
+        },
+        {
+          "text": "*Dynamo: Amazon's Highly Available Key-value Store* (SOSP 2007), partitioning section",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "title": "CAP, PACELC & consistency models",
+      "labels": [
+        "concept",
+        "phase-1-fundamentals"
+      ],
+      "milestone": "Phase 1 — Fundamentals",
+      "goal": "Be precise about what consistency guarantees mean and what they cost in availability and latency.",
+      "cover": [
+        "CAP and PACELC",
+        "Strong vs eventual vs causal consistency",
+        "Linearizability",
+        "Quorum (R + W > N)"
+      ],
+      "resources": [
+        {
+          "text": "Martin Kleppmann, *Designing Data-Intensive Applications* (1st ed.): \"Consistency and Consensus\" chapter",
+          "verified": true
+        },
+        {
+          "text": "system-design-primer: [CAP theorem](https://github.com/donnemartin/system-design-primer#cap-theorem), [Consistency patterns](https://github.com/donnemartin/system-design-primer#consistency-patterns)",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Message queues & pub/sub",
+      "labels": [
+        "concept",
+        "phase-1-fundamentals"
+      ],
+      "milestone": "Phase 1 — Fundamentals",
+      "goal": "Understand queue vs log semantics and the delivery guarantees each can and can't give.",
+      "cover": [
+        "Queue vs log (RabbitMQ vs Kafka)",
+        "Consumer groups",
+        "At-most / at-least / exactly-once delivery",
+        "Ordering"
+      ],
+      "resources": [
+        {
+          "text": "Martin Kleppmann, *Designing Data-Intensive Applications* (1st ed.): \"Stream Processing\" chapter",
+          "verified": true
+        },
+        {
+          "text": "system-design-primer: [Message queues](https://github.com/donnemartin/system-design-primer#message-queues), [Back pressure](https://github.com/donnemartin/system-design-primer#back-pressure)",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Idempotency & retries",
+      "labels": [
+        "concept",
+        "phase-1-fundamentals"
+      ],
+      "milestone": "Phase 1 — Fundamentals",
+      "goal": "Know how to make operations safe to retry and why exactly-once is built, not given.",
+      "cover": [
+        "Idempotency keys",
+        "Dedup",
+        "Safe retries",
+        "Exactly-once as an illusion"
+      ],
+      "resources": [
+        {
+          "text": "Stripe blog: [Designing robust and predictable APIs with idempotency](https://stripe.com/blog/idempotency)",
+          "verified": true
+        },
+        {
+          "text": "Martin Kleppmann, *Designing Data-Intensive Applications* (1st ed.): \"Stream Processing\" chapter",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Rate limiting",
+      "labels": [
+        "concept",
+        "phase-1-fundamentals"
+      ],
+      "milestone": "Phase 1 — Fundamentals",
+      "goal": "Know the rate limiting algorithms, then design a distributed rate limiter.",
+      "cover": [
+        "Token bucket",
+        "Leaky bucket",
+        "Fixed / sliding window",
+        "Distributed rate limiter on Redis",
+        "Race conditions"
+      ],
+      "resources": [
+        {
+          "text": "Alex Xu, *System Design Interview – An Insider's Guide*: \"Design A Rate Limiter\" chapter",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "API design",
+      "labels": [
+        "concept",
+        "phase-2-patterns"
+      ],
+      "milestone": "Phase 2 — Patterns",
+      "goal": "Be able to choose an API style and design pagination, versioning, and errors deliberately.",
+      "cover": [
+        "REST vs gRPC vs GraphQL",
+        "Pagination (offset vs cursor)",
+        "Versioning",
+        "Error design"
+      ],
+      "resources": [
+        {
+          "text": "system-design-primer: [Representational state transfer (REST)](https://github.com/donnemartin/system-design-primer#representational-state-transfer-rest), [Remote procedure call (RPC)](https://github.com/donnemartin/system-design-primer#remote-procedure-call-rpc)",
+          "verified": true
+        },
+        {
+          "text": "Google Cloud API Design Guide",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "title": "Event-driven architecture, CQRS & event sourcing",
+      "labels": [
+        "concept",
+        "phase-2-patterns"
+      ],
+      "milestone": "Phase 2 — Patterns",
+      "goal": "Understand when events, CQRS, and event sourcing help and when they add pain for no gain.",
+      "cover": [
+        "Event-driven architecture",
+        "CQRS",
+        "Event sourcing",
+        "When they help",
+        "When they hurt"
+      ],
+      "resources": [
+        {
+          "text": "Martin Kleppmann, *Designing Data-Intensive Applications* (1st ed.): \"Stream Processing\" chapter",
+          "verified": true
+        },
+        {
+          "text": "Martin Fowler: \"Event Sourcing\" and \"CQRS\" articles",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "title": "Distributed transactions",
+      "labels": [
+        "concept",
+        "phase-2-patterns"
+      ],
+      "milestone": "Phase 2 — Patterns",
+      "goal": "Know how to keep data consistent across services without a single database transaction.",
+      "cover": [
+        "2PC",
+        "Saga: choreography vs orchestration",
+        "Transactional outbox"
+      ],
+      "resources": [
+        {
+          "text": "Martin Kleppmann, *Designing Data-Intensive Applications* (1st ed.): \"Transactions\", \"Consistency and Consensus\" chapters",
+          "verified": true
+        },
+        {
+          "text": "Chris Richardson, microservices.io: Saga and Transactional Outbox patterns",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "title": "Resilience patterns",
+      "labels": [
+        "concept",
+        "phase-2-patterns"
+      ],
+      "milestone": "Phase 2 — Patterns",
+      "goal": "Know the patterns that stop one slow or failing dependency from taking down the system.",
+      "cover": [
+        "Timeouts",
+        "Retries with backoff + jitter",
+        "Circuit breaker",
+        "Bulkhead",
+        "Load shedding",
+        "Graceful degradation"
+      ],
+      "resources": [
+        {
+          "text": "Amazon Builders' Library: [Timeouts, retries, and backoff with jitter](https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/)",
+          "verified": true
+        },
+        {
+          "text": "Michael Nygard, *Release It!*",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "title": "Consensus & leader election",
+      "labels": [
+        "concept",
+        "phase-2-patterns"
+      ],
+      "milestone": "Phase 2 — Patterns",
+      "goal": "Understand how a cluster agrees on a leader and what goes wrong when it doesn't.",
+      "cover": [
+        "Raft basics",
+        "Split brain",
+        "Fencing tokens",
+        "Where etcd / ZooKeeper fit"
+      ],
+      "resources": [
+        {
+          "text": "[The Raft Consensus Algorithm](https://raft.github.io/) (paper and visualization)",
+          "verified": true
+        },
+        {
+          "text": "Martin Kleppmann, *Designing Data-Intensive Applications* (1st ed.): \"The Trouble with Distributed Systems\", \"Consistency and Consensus\" chapters",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Probabilistic data structures",
+      "labels": [
+        "concept",
+        "phase-2-patterns"
+      ],
+      "milestone": "Phase 2 — Patterns",
+      "goal": "Know what Bloom filters, HyperLogLog, and count-min sketch trade away and where each shows up.",
+      "cover": [
+        "Bloom filter",
+        "HyperLogLog",
+        "Count-min sketch",
+        "Where each shows up in real systems"
+      ],
+      "resources": [
+        {
+          "text": "Martin Kleppmann, *Designing Data-Intensive Applications* (1st ed.): \"Storage and Retrieval\" chapter (Bloom filters in LSM trees)",
+          "verified": true
+        },
+        {
+          "text": "Redis documentation: Bloom filter and HyperLogLog data types",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "title": "Storage engines & indexing",
+      "labels": [
+        "concept",
+        "phase-2-patterns"
+      ],
+      "milestone": "Phase 2 — Patterns",
+      "goal": "Understand how B-trees and LSM trees store data and why that shapes read/write performance.",
+      "cover": [
+        "B-tree vs LSM tree",
+        "Write / read amplification",
+        "Inverted index for search"
+      ],
+      "resources": [
+        {
+          "text": "Martin Kleppmann, *Designing Data-Intensive Applications* (1st ed.): \"Storage and Retrieval\" chapter",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "URL shortener",
+      "labels": [
+        "design",
+        "phase-3-designs"
+      ],
+      "milestone": "Phase 3 — Classic designs",
+      "goal": "Design a URL shortener that serves very high read traffic with low latency.",
+      "cover": [
+        "ID generation",
+        "Base62 encoding",
+        "Redirects (301 vs 302)",
+        "Read-heavy caching",
+        "Analytics"
+      ],
+      "resources": [
+        {
+          "text": "Alex Xu, *System Design Interview – An Insider's Guide*: \"Design A Url Shortener\" chapter",
+          "verified": true
+        },
+        {
+          "text": "system-design-primer: [Design Pastebin.com (or Bit.ly)](https://github.com/donnemartin/system-design-primer/blob/master/solutions/system_design/pastebin/README.md)",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Unique ID generator",
+      "labels": [
+        "design",
+        "phase-3-designs"
+      ],
+      "milestone": "Phase 3 — Classic designs",
+      "goal": "Design a distributed ID generator and justify its ordering and uniqueness guarantees.",
+      "cover": [
+        "UUID vs DB sequence vs Snowflake",
+        "Clock skew",
+        "Sortability"
+      ],
+      "resources": [
+        {
+          "text": "Alex Xu, *System Design Interview – An Insider's Guide*: \"Design A Unique Id Generator In Distributed Systems\" chapter",
+          "verified": true
+        },
+        {
+          "text": "Twitter engineering blog: \"Announcing Snowflake\" (2010)",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Distributed key-value store",
+      "labels": [
+        "design",
+        "phase-3-designs"
+      ],
+      "milestone": "Phase 3 — Classic designs",
+      "goal": "Design a Dynamo-style key-value store and explain every availability/consistency knob.",
+      "cover": [
+        "Partitioning",
+        "Replication",
+        "Quorum",
+        "Vector clocks",
+        "Hinted handoff",
+        "Anti-entropy"
+      ],
+      "resources": [
+        {
+          "text": "Alex Xu, *System Design Interview – An Insider's Guide*: \"Design A Key-value Store\" chapter",
+          "verified": true
+        },
+        {
+          "text": "*Dynamo: Amazon's Highly Available Key-value Store* (SOSP 2007)",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "title": "Notification system",
+      "labels": [
+        "design",
+        "phase-3-designs"
+      ],
+      "milestone": "Phase 3 — Classic designs",
+      "goal": "Design a notification system that fans out across channels reliably without spamming users.",
+      "cover": [
+        "Push / SMS / email fan-out",
+        "Templates",
+        "User preferences",
+        "Retries",
+        "Dedup",
+        "Rate limits"
+      ],
+      "resources": [
+        {
+          "text": "Alex Xu, *System Design Interview – An Insider's Guide*: \"Design A Notification System\" chapter",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Chat system (WhatsApp-like)",
+      "labels": [
+        "design",
+        "phase-3-designs"
+      ],
+      "milestone": "Phase 3 — Classic designs",
+      "goal": "Design a 1:1 and group chat system with real-time delivery and offline sync.",
+      "cover": [
+        "WebSockets",
+        "Presence",
+        "Message ordering",
+        "Delivery receipts",
+        "Offline sync",
+        "Group chat"
+      ],
+      "resources": [
+        {
+          "text": "Alex Xu, *System Design Interview – An Insider's Guide*: \"Design A Chat System\" chapter",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "News feed (Twitter/Instagram)",
+      "labels": [
+        "design",
+        "phase-3-designs"
+      ],
+      "milestone": "Phase 3 — Classic designs",
+      "goal": "Design a news feed and choose a fan-out strategy that survives celebrity accounts.",
+      "cover": [
+        "Fan-out on write vs fan-out on read",
+        "Celebrity problem",
+        "Ranking",
+        "Feed cache"
+      ],
+      "resources": [
+        {
+          "text": "Alex Xu, *System Design Interview – An Insider's Guide*: \"Design A News Feed System\" chapter",
+          "verified": true
+        },
+        {
+          "text": "system-design-primer: [Design the Twitter timeline and search](https://github.com/donnemartin/system-design-primer/blob/master/solutions/system_design/twitter/README.md)",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Web crawler",
+      "labels": [
+        "design",
+        "phase-3-designs"
+      ],
+      "milestone": "Phase 3 — Classic designs",
+      "goal": "Design a polite, distributed web crawler that avoids duplicate work.",
+      "cover": [
+        "URL frontier",
+        "Politeness",
+        "Dedup (content hashing)",
+        "robots.txt",
+        "Distributed workers"
+      ],
+      "resources": [
+        {
+          "text": "Alex Xu, *System Design Interview – An Insider's Guide*: \"Design A Web Crawler\" chapter",
+          "verified": true
+        },
+        {
+          "text": "system-design-primer: [Design a web crawler](https://github.com/donnemartin/system-design-primer/blob/master/solutions/system_design/web_crawler/README.md)",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Search autocomplete / typeahead",
+      "labels": [
+        "design",
+        "phase-3-designs"
+      ],
+      "milestone": "Phase 3 — Classic designs",
+      "goal": "Design a typeahead service that returns top suggestions per prefix in milliseconds.",
+      "cover": [
+        "Trie",
+        "Top-k per prefix",
+        "Offline aggregation",
+        "Caching at the edge"
+      ],
+      "resources": [
+        {
+          "text": "Alex Xu, *System Design Interview – An Insider's Guide*: \"Design A Search Autocomplete System\" chapter",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Distributed job scheduler",
+      "labels": [
+        "design",
+        "phase-3-designs"
+      ],
+      "milestone": "Phase 3 — Classic designs",
+      "goal": "Design a scheduler that runs cron-style jobs at scale without missing or duplicating runs.",
+      "cover": [
+        "Cron at scale",
+        "Leader election",
+        "Exactly-once execution",
+        "Retries",
+        "Visibility timeouts"
+      ],
+      "resources": [
+        {
+          "text": "Martin Kleppmann, *Designing Data-Intensive Applications* (1st ed.): \"The Trouble with Distributed Systems\", \"Consistency and Consensus\" chapters (leader election, fencing)",
+          "verified": true
+        },
+        {
+          "text": "system-design-primer: [Asynchronism](https://github.com/donnemartin/system-design-primer#asynchronism)",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Video streaming platform (YouTube/Netflix)",
+      "labels": [
+        "design",
+        "phase-3-designs"
+      ],
+      "milestone": "Phase 3 — Classic designs",
+      "goal": "Design the upload-to-playback path of a video platform at global scale.",
+      "cover": [
+        "Upload pipeline",
+        "Transcoding",
+        "Adaptive bitrate (HLS / DASH)",
+        "CDN"
+      ],
+      "resources": [
+        {
+          "text": "Alex Xu, *System Design Interview – An Insider's Guide*: \"Design Youtube\" chapter",
+          "verified": true
+        },
+        {
+          "text": "Netflix Technology Blog",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "title": "Proximity service / ride-sharing (Yelp/Uber)",
+      "labels": [
+        "design",
+        "phase-3-designs"
+      ],
+      "milestone": "Phase 3 — Classic designs",
+      "goal": "Design location search and matching that handles constant location updates.",
+      "cover": [
+        "Geohash vs quadtree",
+        "Location updates at scale",
+        "Matching"
+      ],
+      "resources": [
+        {
+          "text": "Alex Xu, *System Design Interview – An Insider's Guide* Vol. 2: \"Proximity Service\" chapter",
+          "verified": true
+        },
+        {
+          "text": "Uber Engineering blog: H3 hexagonal spatial index",
+          "verified": false
+        }
+      ]
+    },
+    {
+      "title": "Payment system",
+      "labels": [
+        "design",
+        "phase-3-designs"
+      ],
+      "milestone": "Phase 3 — Classic designs",
+      "goal": "Design a payment system where money moves exactly once and every cent can be reconciled.",
+      "cover": [
+        "Idempotency",
+        "Double-entry ledger",
+        "Reconciliation",
+        "PSP integration",
+        "Exactly-once money movement"
+      ],
+      "resources": [
+        {
+          "text": "Alex Xu, *System Design Interview – An Insider's Guide* Vol. 2: \"Payment System\" chapter",
+          "verified": true
+        }
+      ]
+    },
+    {
+      "title": "Observability platform (capstone)",
+      "labels": [
+        "design",
+        "phase-3-designs"
+      ],
+      "milestone": "Phase 3 — Classic designs",
+      "goal": "Design a multi-tenant metrics/logs/traces platform and compare it to how Grafana's stack solves it.",
+      "cover": [
+        "Metrics / logs / traces ingestion at scale",
+        "High cardinality",
+        "Retention tiers",
+        "Multi-tenant query",
+        "Compare to how Loki / Mimir / Tempo solve it"
+      ],
+      "resources": [
+        {
+          "text": "Grafana docs: [Loki](https://grafana.com/docs/loki/latest/), [Mimir](https://grafana.com/docs/mimir/latest/), [Tempo](https://grafana.com/docs/tempo/latest/) (architecture sections)",
+          "verified": true
+        }
+      ]
+    }
+  ]
+}
