@@ -27,10 +27,10 @@ You end up with your own repo holding 7 labels, 3 milestones and issues #1-#30 i
 
 - **No terminal for step 2?** In your repo, open the **Actions** tab, pick **Seed backlog**, and click **Run workflow**. This uses GitHub's built-in token, so no secret is needed.
 - **Start with an empty repo.** It must have no issues or pull requests yet, so issue numbers line up with the learning order. The seeder checks this and stops before changing anything.
-- **Use the template button, not a fork.** If you do fork, first enable Issues (Settings, then Features) and enable workflows in the Actions tab.
+- **Template or fork?** The template button gives you a clean start with Issues and workflows already on, and your entries count toward your contribution graph. A copy never receives later changes from this repo. Fork instead if you want to pull future updates (Sync fork or `gh repo sync`): enable Issues (Settings, then Features) and workflows (Actions tab) first, and expect some merge conflicts in `README.md` once you start logging progress.
 - **Make it your own.** The curriculum is data: `backlog/issues.json`, `backlog/labels.json` and `backlog/milestones.json`. Edit them before seeding. Resources marked `"verified": false` were named from memory, so check them before relying on them.
 
-What has been tested: `seed.py` against a simulated `gh` (fresh repo, rerun, existing PR, number drift, partial run, dry run) and a dry run against the original repo. What hasn't: the "Seed backlog" workflow and creating a real copy from the template. If either fails for you, please open an issue.
+What has been tested: `seed.py` against a simulated `gh` (fresh repo, rerun, existing PR, number drift, partial run, dry run) and a dry run against the original repo. What hasn't: the "Seed backlog" workflow and creating a real copy from the template. Those are the likeliest places for rough edges.
 
 ## Weekly rhythm
 
