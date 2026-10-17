@@ -1,6 +1,6 @@
 # Bootstrap prompt
 
-If you just want this repo for your own practice, you don't need this prompt: click **Use this template** on GitHub, then run `./scripts/seed.py` (see the README). This prompt is for building your own variant from scratch, for example with a different curriculum.
+If you just want this repo for your own practice, you don't need this prompt: fork it, switch to the `template` branch, and run `./scripts/seed.py --repo <you>/system-design-daily` (see the README). This prompt is for building your own variant from scratch, for example with a different curriculum.
 
 Paste everything below the line into Claude Code, run from an empty clone of a new GitHub repo. Replace `punitpi/system-design-daily` with your own `owner/repo` first.
 
@@ -33,6 +33,7 @@ scripts/seed.py
 backlog/{issues,labels,milestones}.json
 .github/workflows/seed.yml
 docs/bootstrap-prompt.md
+docs/maintaining.md
 CLAUDE.md
 .claude/skills/{today,tutor,quiz,polish}/SKILL.md
 .claude/agents/design-reviewer.md
@@ -44,7 +45,7 @@ CLAUDE.md
 - A TL;DR line: `/today` → read the issue's resources → `/tutor` → write the entry from memory → `/polish` → explain it out loud in 2 minutes → commit with `Closes #N`. Link to `docs/how-to.md`.
 - The weekly rhythm: 2 concept days, 3 design days, 1 teardown day (real engineering blog post), 1 review/rest day. Note that weeks 1–3 run concepts on all five weekday slots, because the design issues (#18+) depend on the fundamentals.
 - How to work: pick the lowest-numbered open issue → `./scripts/new.sh <type> <slug> <issue#>` → fill in the template → commit with `Closes #<issue#>`.
-- A "Use this for your own practice" section: click Use this template (the new repo must have no issues or PRs yet), run `./scripts/seed.py` (or the "Seed backlog" workflow), then `/today`. Mention that `"verified": false` resources were named from memory.
+- A "Get your own copy (fork)" section: explain that `main` is my practice log and the clean copy is the `template` branch; give the commands to fork with all branches, `git switch template`, set it as the fork's default branch with `gh repo edit "$ME/<repo>" --default-branch template --enable-issues`, run `./scripts/seed.py --repo "$ME/<repo>"` (always pass `--repo`, because after `gh repo fork --clone` plain `gh` defaults to the upstream repo), then `/today`. Mention that commits on a fork don't count on the contribution graph, that Sync fork pulls updates, and that `"verified": false` resources were named from memory.
 - A "Working with Claude" table listing `/today`, `/tutor`, `/quiz`, `/polish`, and the `design-reviewer` agent.
 - A "Progress log" table (Date | Type | Topic | Issue | Link) that starts empty. It must be the **last thing in the file**, because `new.sh` appends to it.
 
@@ -195,8 +196,8 @@ For design issues, add this checklist item to "Done when": `Diagram included (Me
 29. Payment system — idempotency, double-entry ledger, reconciliation, PSP integration, exactly-once money movement
 30. Observability platform (capstone) — metrics/logs/traces ingestion at scale, high cardinality, retention tiers, multi-tenant query (compare to how Loki/Mimir/Tempo solve it)
 
-## 7. Make it a template (ask me first)
-After I confirm, mark the repo as a template with `gh repo edit --template`. Don't do this unprompted.
+## 7. Branches
+`main` is my personal practice log. Create a `template` branch from the scaffold commit before any entries exist, and keep it free of entries, progress-log rows and quiz logs. Don't mark the repo as a GitHub template (a template copy would take `main`, which holds my entries). Document the maintainer workflow in `docs/maintaining.md`: tooling and docs changes land on `template` first, then `git merge template` into `main`.
 
 ## 8. Commit & push
 - Commit the structure with a message like "chore: scaffold repo, templates, and new-entry script", and the Claude setup separately with "chore: add Claude learning setup". No AI attribution trailers.
