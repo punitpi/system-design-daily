@@ -18,6 +18,8 @@ The curriculum is data, not hand-made GitHub state: `backlog/issues.json` (30 is
    - On GitHub: **Actions** tab, **Seed backlog**, **Run workflow**
 3. Open Claude Code in the repo and run `/today`.
 
+Use the template button rather than forking. If you do fork, first enable Issues (Settings, then Features) and enable workflows in the Actions tab.
+
 Edit the JSON before seeding to make the curriculum your own. Resources marked `"verified": false` were named from memory, so check them before relying on them.
 
 ## Weekly rhythm

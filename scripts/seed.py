@@ -49,6 +49,10 @@ def main():
     dry = args.dry_run
     print(f"Repo: {repo}{' (dry run)' if dry else ''}")
 
+    # Forks (and some repos) have Issues switched off, which would fail confusingly later.
+    if gh("repo", "view", repo, "--json", "hasIssuesEnabled", "--jq", ".hasIssuesEnabled").stdout.strip() != "true":
+        sys.exit(f"Issues are disabled on {repo}. Enable them under Settings > General > Features > Issues, then rerun.")
+
     # Preflight, before changing anything: issue numbers follow the learning order, so the repo's
     # issue/PR counter must line up with the first issue still to be created.
     issues = load("issues.json")["issues"]
