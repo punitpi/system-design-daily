@@ -12,35 +12,41 @@ To get your own copy, see [Get your own copy](#get-your-own-copy-fork). The full
 
 This repo is my own practice log, so `main` has my entries. A clean copy with no entries lives on the **`template`** branch. Fork the repo and start from that branch.
 
-You need: the [GitHub CLI](https://cli.github.com/) signed in (`gh auth login`), Python 3, and [Claude Code](https://claude.com/claude-code).
+You need a GitHub account and [Claude Code](https://claude.com/claude-code). Everything up to step 3 happens in the browser.
+
+1. **Fork** this repo. Untick **Copy the DEFAULT branch only** so you also get the `template` branch.
+2. **In your fork's settings:**
+   - **Settings, then General, then Features:** turn **Issues** on (forks have it off by default).
+   - **Settings, then Branches:** change the default branch to `template`, so `Closes #N` in your commits closes issues.
+   - **Actions tab:** enable workflows.
+3. **Seed the backlog:** in the **Actions** tab, pick **Seed backlog** and click **Run workflow**. It creates 7 labels, 3 milestones and issues #1-#30 in learning order. It uses GitHub's built-in token, so you don't create any secret, and it is safe to run again.
+4. **Start day 1:** clone your fork, switch to the clean branch, and open Claude Code.
+   ```sh
+   gh repo clone <you>/system-design-daily && cd system-design-daily
+   git switch template
+   claude        # then type: /today
+   ```
+
+Your fork's `main` branch will have my entries. Ignore it or delete it (`git push origin --delete main`).
+
+### Prefer the terminal to the workflow?
+
+You need the [GitHub CLI](https://cli.github.com/) signed in (`gh auth login`) and Python 3. Replace step 3 with:
 
 ```sh
-# 1. Fork with all branches and clone. On the web, untick "Copy the DEFAULT branch only" instead.
-gh repo fork punitpi/system-design-daily --clone
-cd system-design-daily
 ME=$(gh api user --jq .login)
-
-# 2. Start from the clean branch, make it your fork's default (so "Closes #N" works), turn Issues on
-git switch template
-gh repo edit "$ME/system-design-daily" --default-branch template --enable-issues
-
-# 3. Create the labels, milestones and 30 issues in YOUR fork (add --dry-run to preview first)
-./scripts/seed.py --repo "$ME/system-design-daily"
-
-# 4. Start day 1
-claude        # then type: /today
+./scripts/seed.py --repo "$ME/system-design-daily"     # add --dry-run to preview first
 ```
 
-Always pass `--repo` to the seeder in a fork: after `gh repo fork --clone`, plain `gh` commands default to *my* repo, not yours.
+Always pass `--repo` in a fork. After `gh repo fork --clone`, plain `gh` commands default to *my* repo, not yours. You can also do steps 1 and 2 from the terminal: `gh repo fork punitpi/system-design-daily --clone`, then `gh repo edit "$ME/system-design-daily" --default-branch template --enable-issues`.
 
-You end up with your own repo holding 7 labels, 3 milestones and issues #1-#30 in learning order, plus the templates, the `new.sh` script and the Claude skills (they live in `.claude/` and come with the copy). Your fork's `main` branch will have my entries; ignore it or delete it (`git push origin --delete main`).
+### Good to know
 
-- **No terminal for step 3?** Enable workflows in your fork's **Actions** tab, then pick **Seed backlog** and click **Run workflow**. It uses GitHub's built-in token, so no secret is needed.
 - **Start with a fork that has no issues or pull requests.** Issue numbers must line up with the learning order. The seeder checks this and stops before changing anything.
-- **Trade-offs of a fork:** commits on a fork don't count toward your GitHub contribution graph. In return, you can pull my later fixes with **Sync fork** (or `gh repo sync`) on the `template` branch, and expect some merge conflicts in `README.md` once you start logging progress.
+- **Trade-offs of a fork:** commits on a fork don't count toward your GitHub contribution graph. In return, you can pull my later fixes with **Sync fork** (or `gh repo sync`) on the `template` branch. Expect some merge conflicts in `README.md` once you start logging progress.
 - **Make it your own.** The curriculum is data: `backlog/issues.json`, `backlog/labels.json` and `backlog/milestones.json`. Edit them before seeding. Resources marked `"verified": false` were named from memory, so check them before relying on them.
 
-What has been tested: `seed.py` against a simulated `gh` (fresh repo, rerun, existing PR, number drift, partial run, dry run, Issues disabled) and a dry run against the original repo. What hasn't: the fork steps above end to end, and the "Seed backlog" workflow.
+**Tested:** the Seed backlog workflow on an empty repo (it created 7 labels, 3 milestones and 30 issues matching this repo, and a second run created nothing), and `seed.py` against a simulated `gh` (fresh repo, rerun, existing PR, number drift, partial run, dry run, Issues disabled). **Not yet tested:** the fork steps end to end (forking with all branches, changing the default branch, enabling workflows in a fork).
 
 ## Weekly rhythm
 
